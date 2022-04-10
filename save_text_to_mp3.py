@@ -12,14 +12,14 @@ def speak(text, language='en'):
     x = pygame.mixer.music.load(mp3_fo, 'mp3')
     pygame.mixer.music.play()
 
+def save(text, language='it'):
+    tts = gTTS(text, lang=language)
+    tts.save(text.splitlines()[0]+ ".mp3")
 
 
-pygame.init()
-pygame.mixer.init()
-# sound.seek(0)
 
  
-slides = """Cos'è il budget?
+slides = """Il budget
 Il budget è il documento di natura contabile che contiene le previsioni e gli obiettivi per il prossimo esercizio.
 Si tratta di dati basati su delle stime,
 quindi è un documento preventivo,
@@ -90,25 +90,10 @@ Ci possono essere degli scostamenti nei ricavi o nei costi per effetto di variaz
 Se sono significativi occorre indagare sulle possibili cause.
 
 Il controllo budgetario si conclude con un rapporto informativo per l'alta direzione perpermettere loro di prendere le decisioni per cercare di riportare l'impresa verso gli obiettivi programmati.
-""".splitlines()
-
-def speak(text=" ", language='it'):
-
-    mp3_fo = BytesIO()
-    tts = gTTS(text, lang=language)
-    tts.write_to_fp(mp3_fo)
-    pygame.mixer.music.load(mp3_fo, 'mp3')
-    pygame.mixer.music.play()
+"""
 
 
-for slide in slides:
-    if slide != "":
-        speak(slide)
-        if pygame.mixer.music.get_busy():
-            # time.sleep(0.1)
-            # time.sleep(len(slide.split(" "))/2)
-            time.sleep(len(slide)/16 + 1.5)
-
+save(slides)
 
 
 

@@ -12,7 +12,7 @@ from io import BytesIO
 
 pygame.init()
 pygame.mixer.init()
-gameDisplay = pygame.display.set_mode((400, 400))
+gameDisplay = pygame.display.set_mode((800, 400))
 
 pngs = [x for x in glob("animals\\*.PNG")]
 names = [x.split(".")[0] for x in glob("animals\\*.PNG")]
